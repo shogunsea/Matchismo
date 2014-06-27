@@ -33,28 +33,26 @@
 {
 //    NSLog(@"flipCount = %d", self.flipCount);
     _flipCount = flipCount;
-    self.flipsLabel.text = [NSString stringWithFormat:@"Flips : %d", self.flipCount];
+    self.flipsLabel.text = [NSString stringWithFormat:@"Flips : %d  Cards left : %d", self.flipCount, [self.deckOfCards count]];
 }
 
 - (IBAction)touchCardButton:(UIButton *)sender {
-    Card *currentCard = nil;
-    
-    currentCard = [self.deckOfCards drawRandomCard];
+
     
     if ([sender.currentTitle length]) {
         [sender setBackgroundImage:[UIImage imageNamed:@"cardback"]
                           forState:UIControlStateNormal];
         [sender setTitle:@"" forState:UIControlStateNormal];
-    } else {
-        [sender setBackgroundImage:[UIImage imageNamed:@"cardfront"]
-                          forState:UIControlStateNormal];
-        [sender setTitle:currentCard.contents forState:UIControlStateNormal];
-    }
-    
-    if (currentCard) {
         self.flipCount++;
+    } else {
+        Card *currentCard = [self.deckOfCards drawRandomCard];
+        if (currentCard) {
+            [sender setBackgroundImage:[UIImage imageNamed:@"cardfront"]
+                              forState:UIControlStateNormal];
+            [sender setTitle:currentCard.contents forState:UIControlStateNormal];
+            self.flipCount++;
+        }
     }
-//    self.flipCount++;
 }
 
 //- (IBAction)touchCardButton:(UIButton *)sender
