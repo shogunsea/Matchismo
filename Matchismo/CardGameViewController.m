@@ -9,24 +9,37 @@
 #import "CardGameViewController.h"
 #import "Deck.h"
 #import "PlayingCardDeck.h"
+#import "CardMatchingGame.h"
 
 @interface CardGameViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (nonatomic) int flipCount;
 @property (strong, nonatomic) Deck *deckOfCards;
+@property (strong, nonatomic) CardMatchingGame *game;
 
 @end
 
 @implementation CardGameViewController
 
+- (CardMatchingGame *)game
+{
+    if (!_game) _game = [[CardMatchingGame alloc] initWithCardCount:0 usingDeck:[self createDeck]];
+    return _game;
+}
+
 - (Deck *)deckOfCards
 {
     if (!_deckOfCards) {
-        _deckOfCards = [[PlayingCardDeck alloc] init];
+        _deckOfCards = [self createDeck];
     }
     
     return _deckOfCards;
+}
+
+- (Deck *)createDeck
+{
+    return [[PlayingCardDeck alloc] init];
 }
  
 - (void) setFlipCount:(int)flipCount
