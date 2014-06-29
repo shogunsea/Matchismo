@@ -10,6 +10,22 @@
 
 @implementation PlayingCard
 
+- (int)match:(NSArray *)otherCards
+{
+    int score = 0;
+    
+    if([otherCards count] == 1) {
+        PlayingCard *otherCard = [otherCards firstObject];// first object will return nil if there is no objects in the array. However sub index of 0 will crash.
+        if ([self.suit isEqualToString:otherCard.suit]) {
+            score = 1;
+        } else if( self.rank == otherCard.rank ) {
+            score = 4;
+        }
+    }
+    
+    return score;
+}
+
 - (NSString *)contents
 {
     NSArray *rankStrings = [PlayingCard rankStrings];
@@ -20,7 +36,7 @@
 
 + (NSArray *)validSuits
 {
-    return @[@"♦︎", @"♥︎", @"♣︎", @"♠︎"];
+    return @[@"♠️", @"♥️", @"♣️", @"♦️"];
 }
 
 - (void)setSuit:(NSString *)suit

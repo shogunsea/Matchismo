@@ -178,9 +178,9 @@
 				DD9C64D9195CAB93007176D4 /* Deck.h */,
 				DD9C64DA195CAB93007176D4 /* Deck.m */,
 				DD9C64DF195DAA37007176D4 /* PlayingCard.h */,
+				DD9C64E0195DAA37007176D4 /* PlayingCard.m */,
 				DD9C64E2195DAE7E007176D4 /* PlayingCardDeck.h */,
 				DD9C64E3195DAE7E007176D4 /* PlayingCardDeck.m */,
-				DD9C64E0195DAA37007176D4 /* PlayingCard.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
